@@ -126,12 +126,15 @@ AnalogInputsRosI::AnalogInputsRosI(ros::NodeHandle nh,
 
 void AnalogInputsRosI::publishLatest(int index)
 {
-    double VREF = 5.0;
+    // double VREF = 5.0;
     // get rawsensorvalue and divide by 4096, which according to the
     // documentation for both the IK888 and IK222 are the maximum sensor value
     // Multiply by VREF=5.0V to get voltage
     std_msgs::Float64 msg;
-    msg.data = VREF * val_to_pubs_[index].last_val / 4095.0;
+    // msg.data = VREF * val_to_pubs_[index].last_val / 4095.0;
+
+    // VINT Hub returns the voltage directly
+    msg.data = val_to_pubs_[index].last_val;
     val_to_pubs_[index].pub.publish(msg);
 }
 
