@@ -67,15 +67,15 @@ Motor::Motor(int32_t serial_number, int hub_port, bool is_hub_port_device,
             ret);
     }
 
-    ret = PhidgetDCMotor_setOnBackEMFChangeHandler(motor_handle_,
-                                                   BackEMFChangeHandler, this);
-    if (ret != EPHIDGET_OK)
-    {
-        throw Phidget22Error(
-            "Failed to set back EMF update handler for Motor channel " +
-                std::to_string(channel),
-            ret);
-    }
+    // ret = PhidgetDCMotor_setOnBackEMFChangeHandler(motor_handle_,
+    //                                                BackEMFChangeHandler, this);
+    // if (ret != EPHIDGET_OK)
+    // {
+    //     throw Phidget22Error(
+    //         "Failed to set back EMF update handler for Motor channel " +
+    //             std::to_string(channel),
+    //         ret);
+    // }
 }
 
 Motor::~Motor()

@@ -104,14 +104,14 @@ MotorsRosI::MotorsRosI(ros::NodeHandle nh, ros::NodeHandle nh_private)
             motor_vals_[i].duty_cycle_pub =
                 nh_.advertise<std_msgs::Float64>(pubtopic, 1);
 
-            char backemftopic[] = "motor_back_emf00";
-            snprintf(backemftopic, sizeof(backemftopic), "motor_back_emf%02d",
-                     i);
-            motor_vals_[i].back_emf_pub =
-                nh_.advertise<std_msgs::Float64>(backemftopic, 1);
+            // char backemftopic[] = "motor_back_emf00";
+            // snprintf(backemftopic, sizeof(backemftopic), "motor_back_emf%02d",
+            //          i);
+            // motor_vals_[i].back_emf_pub =
+            //     nh_.advertise<std_msgs::Float64>(backemftopic, 1);
 
             motor_vals_[i].last_duty_cycle_val = motors_->getDutyCycle(i);
-            motor_vals_[i].last_back_emf_val = motors_->getBackEMF(i);
+            // motor_vals_[i].last_back_emf_val = motors_->getBackEMF(i);
 
             motors_->setDataInterval(i, data_interval_ms);
             motors_->setBraking(i, braking_strength);
@@ -135,7 +135,7 @@ MotorsRosI::MotorsRosI(ros::NodeHandle nh, ros::NodeHandle nh_private)
         for (int i = 0; i < n_motors; ++i)
         {
             publishLatestDutyCycle(i);
-            publishLatestBackEMF(i);
+            //publishLatestBackEMF(i);
         }
     }
 }
